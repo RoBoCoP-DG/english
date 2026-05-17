@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Algorithmic Cage Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; overflow: hidden; background: #0f172a; color: white; }
+        .slide { display: none; height: 100vh; padding: 4rem; flex-direction: column; justify-content: center; transition: opacity 0.5s ease-in-out; }
+        .slide.active { display: flex; opacity: 1; }
+        .accent { color: #38bdf8; }
+        .highlight { color: #f43f5e; }
+        .card { background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; border-radius: 1rem; padding: 2rem; }
+        .progress-bar { position: fixed; bottom: 0; left: 0; height: 4px; background: #38bdf8; transition: width 0.3s ease; }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title -->
+    <div id="slide1" class="slide active text-center">
+        <h2 class="text-2xl mb-4 font-bold tracking-widest uppercase opacity-70">English Speaking</h2>
+        <h1 class="text-7xl font-black mb-6">Algorithmic</h1>
+        <p class="text-xl text-slate-400">Echo Chambers and Online Hate</p>
+        <div class="mt-12 text-sm opacity-50">3819</div>
+    </div>
+
+    <!-- Slide 2: The Hook -->
+    <div id="slide2" class="slide">
+        <h2 class="text-4xl font-bold mb-8 ">We think we are choosing. but are we?</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="card flex flex-col justify-center items-center">
+                <div class="text-6xl mb-4">📱</div>
+                <p class="text-center">Infinite Scrolling</p>
+            </div>
+            <div class="card flex flex-col justify-center items-center">
+                <div class="text-6xl mb-4">🤖</div>
+                <p class="text-center">Hidden Algorithms</p>
+            </div>
+        </div>
+        <p class="mt-8 text-slate-300 text-lg">Your feed is not a window. it's a mirror.</p>
+    </div>
+
+    <!-- Slide 3: Mechanism -->
+    <div id="slide3" class="slide">
+        <h2 class="text-4xl font-bold mb-8">How <span class="accent">Echo Chamber</span> is Built</h2>
+        <div class="space-y-6">
+            <div class="flex items-center gap-6">
+                <div class="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center font-bold">1</div>
+                <div>
+                    <h3 class="text-xl font-bold">Retention</h3>
+                    <p class="text-slate-400">The primary goal: Keep you on the platform.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center font-bold">2</div>
+                <div>
+                    <h3 class="text-xl font-bold">Filter Bubble</h3>
+                    <p class="text-slate-400">Filtering out everything you disagree with.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center font-bold">3</div>
+                <div>
+                    <h3 class="text-xl font-bold">The Echo</h3>
+                    <p class="text-slate-400">Hearing only your own voice amplified.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Hate Speech Connection -->
+    <div id="slide4" class="slide">
+        <h2 class="text-4xl font-bold mb-8">Why it Fuels <span class="highlight">Hate Speech</span></h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="card border-l-4 border-l-rose-500">
+                <h3 class="text-2xl font-bold mb-4">Outrage Sells</h3>
+                <p class="text-slate-400">Anger and fear drive higher clicks and engagement than calm facts.</p>
+            </div>
+            <div class="card border-l-4 border-l-rose-500">
+                <h3 class="text-2xl font-bold mb-4">Dehumanization</h3>
+                <p class="text-slate-400">The Other Side is painted as an enemy.</p>
+            </div>
+        </div>
+        <div class="mt-8 p-4 bg-rose-500/10 border border-rose-500/50 rounded-lg">
+            <p class="text-center font-bold">Result: Hate Speech feels like a "shared truth."</p>
+        </div>
+    </div>
+
+    <!-- Slide 5: Solution -->
+    <div id="slide5" class="slide">
+        <h2 class="text-4xl font-bold mb-8">Breaking the <span class="accent">Bubble</span></h2>
+        <div class="grid grid-cols-3 gap-6">
+            <div class="card text-center">
+                <h3 class="font-bold mb-2">Digital Literacy</h3>
+                <p class="text-sm text-slate-400">Realize your feed is curated, not reality.</p>
+            </div>
+            <div class="card text-center border-2 border-sky-500/30">
+                <h3 class="font-bold mb-2">Algorithm Resistance</h3>
+                <p class="text-sm text-slate-400">Search for views you disagree with.</p>
+            </div>
+            <div class="card text-center">
+                <h3 class="font-bold mb-2">Real Dialogue</h3>
+                <p class="text-sm text-slate-400">Step out of the cage and talk to people.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Conclusion -->
+    <div id="slide6" class="slide text-center">
+        <h1 class="text-5xl font-black mb-8 italic">Thank You.</h1>
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 6;
+
+        function showSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('slide' + n).classList.add('active');
+            document.getElementById('progressBar').style.width = (n / totalSlides) * 100 + '%';
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                if (currentSlide < totalSlides) currentSlide++;
+                showSlide(currentSlide);
+            }
+            if (e.key === 'ArrowLeft') {
+                if (currentSlide > 1) currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Touch support
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        window.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+        window.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchendX < touchstartX - 50) { if (currentSlide < totalSlides) currentSlide++; showSlide(currentSlide); }
+            if (touchendX > touchstartX + 50) { if (currentSlide > 1) currentSlide--; showSlide(currentSlide); }
+        });
+    </script>
+</body>
+</html>
